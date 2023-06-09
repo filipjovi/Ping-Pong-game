@@ -34,14 +34,23 @@ window_height = 500
 mw = display.set_mode((window_width,window_height))
 mw.fill(back)
 
+platform_left = Player('racket.png',30,200,4,50,150)
+platform_right = Player('racket.png',520,200,4,50,150)
+ball = GameSprite('racket.png',200,200,4,50,50)
+
 clock = time.Clock()
 FPS = 60
 game = True
+finish = False
 
 while game:
     for e in event.get():
         if e.type == QUIT:
             game = False
+        if finish != True:
+            mw.fill(back)
+            platform_left.reset()
+            platform_right.reset()
 
     display.update()
     clock.tick(FPS)
